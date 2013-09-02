@@ -1,0 +1,12 @@
+<div id="homepage-controls">
+  <h1>River of news</h1>
+  <p>A nice way to stream news from MyNewsDesk.</p>
+  <p id="notice"><%= notice %></p>
+  <%= link_to new_partner_path do %>
+    <%= button_tag :"Sign up" %>
+  <% end %>
+  <hr />
+  <%= form_tag(login_path) do %>
+    <%= text_field_tag :name %><%= submit_tag :"Sign in" %>
+  <% end %>
+</div>
