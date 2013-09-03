@@ -1,5 +1,7 @@
 RiverOfNews::Application.routes.draw do
-  resources :partners, except: :index
+  resources :partners, except: :index do
+    get :feed, on: :member
+  end
 
   match :login, controller: :partners, action: :login, as: :login
 

@@ -12,6 +12,22 @@ class PartnersController < ApplicationController
     end
   end
 
+  def feed
+    @partner = Partner.find(params[:id]) 
+
+    require 'open-uri'
+
+    #begin
+      xml = open(@partner.url).read
+
+      @feed = Feed.from_xml(xml)
+    #rescue
+      
+    #end
+  end
+
+  ### RESTful actions
+
   # GET /partners
   # GET /partners.json
   def index
