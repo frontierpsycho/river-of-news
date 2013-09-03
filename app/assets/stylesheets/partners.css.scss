@@ -18,10 +18,18 @@ body {
   background-color: rgb(251, 249, 249);
   .item {
     display: inline-block;
-    width: 374px;
-    border: 1px #BBB solid;
+    max-width: 374px;
+    min-width: 125px;
     border-radius: 3px;
     background-color: white;
     margin: 10px 5px; 
+    border: 1px #BBB solid;
+    .text {
+      padding: 0 0.5em 0.5em 0.5em;
+      .below-header {
+        color: lightgray;
+        font-size: 0.8em;
+      }
+    }
   }
 }

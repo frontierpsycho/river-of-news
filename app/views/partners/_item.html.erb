@@ -1,6 +1,10 @@
-<div class="item">
-<%= image_tag item.image_thumbnail_medium %>
-<h3><%= item.header %></h3>
-<p>Language: <%= item.language %></p>
-<p>Type of media: <%= item.type_of_media %></p>
-</div>
+<%= content_tag :div, class: :item do %>
+  <%= image_tag item.image_thumbnail_medium %>
+  <%= content_tag :div, class: :text do %>
+    <%= content_tag :h3, item.header %>
+    <%= content_tag :span, class: :"below-header" do %>
+      <%= item.type_of_media.capitalize %> &sdot; <%= display_published_at(item.published_at) %>
+    <% end %>
+    <%= content_tag :p, raw(item.summary) %>
+  <% end %>
+<% end %>
