@@ -24,6 +24,12 @@ class PartnersController < ApplicationController
     @items = feed.items.select {|item| ['pressrelease', 'news'].member? item.type_of_media }
 
     @items.sort {|item1, item2| item1.published_at <=> item2.published_at } 
+    
+    @partner.last_fetched = Time.now
+
+    unless @partner.save
+      head :internal_server_error 
+    end
   end
 
   def fetch_latest
@@ -45,6 +51,7 @@ class PartnersController < ApplicationController
     if @partner.save
       render "partners/fetch_latest", layout: false
     else
+      head :internal_server_error 
     end
   end
 
