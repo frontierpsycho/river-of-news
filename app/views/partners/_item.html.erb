@@ -1,7 +1,7 @@
 <%= content_tag :div, class: :item do %>
-  <%= image_tag item.image_thumbnail_medium %>
+  <%= link_to item.url, target: :_blank do %><%= image_tag item.image_thumbnail_medium %><% end %>
   <%= content_tag :div, class: :text do %>
-    <%= content_tag :h3, item.header %>
+    <%= link_to item.url, target: :_blank do %><%= content_tag :h3, item.header %><% end %>
     <%= content_tag :span, class: :"below-header" do %>
       <%= item.type_of_media.capitalize %> &sdot; <%= display_published_at(item.published_at) %>
     <% end %>

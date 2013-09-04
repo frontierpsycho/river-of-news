@@ -6,6 +6,16 @@ body {
   margin: 0;
 }
 
+a {
+  color: black;
+  &:hover {
+    color: black;
+  }
+  &:visited {
+    color: black;
+  }
+}
+
 #homepage-controls {
   text-align: center;
   width: 600px;
@@ -23,8 +33,17 @@ body {
     background-color: white;
     margin: 10px 5px; 
     border: 1px #BBB solid;
+    a:hover {
+      text-decoration: none;
+    }
     .text {
       padding: 0 0.5em 0.5em 0.5em;
+      a {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
       .below-header {
         color: lightgray;
         font-size: 0.8em;
