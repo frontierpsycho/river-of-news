@@ -22,6 +22,8 @@ class PartnersController < ApplicationController
 
     # filter and sort
     @items = feed.items.select {|item| ['pressrelease', 'news'].member? item.type_of_media }
+
+    @items.sort {|item1, item2| item1.published_at <=> item2.published_at } 
   end
 
   ### RESTful actions
