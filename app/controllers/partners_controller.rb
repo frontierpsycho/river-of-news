@@ -26,6 +26,28 @@ class PartnersController < ApplicationController
     @items.sort {|item1, item2| item1.published_at <=> item2.published_at } 
   end
 
+  def fetch_latest
+    @partner = Partner.find(params[:id])
+
+    require 'open-uri'
+
+    puts @partner.get_latest
+    xml = open(@partner.get_latest).read
+    feed = Feed.from_xml(xml)
+
+    # filter and sort
+    @items = feed.items.select {|item| ['pressrelease', 'news'].member? item.type_of_media }
+
+    @items.sort {|item1, item2| item1.published_at <=> item2.published_at } 
+
+    @partner.last_fetched = Time.now
+
+    if @partner.save
+      render "partners/fetch_latest", layout: false
+    else
+    end
+  end
+
   ### RESTful actions
 
   # GET /partners
