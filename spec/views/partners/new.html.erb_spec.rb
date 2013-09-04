@@ -4,8 +4,7 @@ describe "partners/new" do
   before(:each) do
     assign(:partner, stub_model(Partner,
       :name => "MyString",
-      :unique_key => "MyString",
-      :channel => "MyString"
+      :url => "URL"
     ).as_new_record)
   end
 
@@ -15,8 +14,7 @@ describe "partners/new" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", partners_path, "post" do
       assert_select "input#partner_name[name=?]", "partner[name]"
-      assert_select "input#partner_unique_key[name=?]", "partner[unique_key]"
-      assert_select "input#partner_channel[name=?]", "partner[channel]"
+      assert_select "input#partner_url[name=?]", "partner[url]"
     end
   end
 end

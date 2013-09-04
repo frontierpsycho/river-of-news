@@ -23,20 +23,12 @@ describe PartnersController do
   # This should return the minimal set of attributes required to create a valid
   # Partner. As you add validations to Partner, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { { "name" => "MyString", "url" => "http://bash.org" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # PartnersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
-  describe "GET index" do
-    it "assigns all partners as @partners" do
-      partner = Partner.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:partners).should eq([partner])
-    end
-  end
 
   describe "GET show" do
     it "assigns the requested partner as @partner" do
