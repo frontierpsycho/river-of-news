@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @partner.name %>
-</p>
+<%= content_tag :h1, @partner.name %>
 
 <p>
-  <b>URL:</b>
+  <b>Endpoint URL:</b>
   <%= @partner.url %>
 </p>
+
+<h2>Feed URL (for use in your iframe)</h2>
+<h3><%= url_for controller: 'partners', action: 'feed', only_path: false %></h3>
 
 <%= link_to 'Edit', edit_partner_path(@partner) %> |
 <%= link_to 'Logout', root_path %>
