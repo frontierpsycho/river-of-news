@@ -17,13 +17,11 @@ class PartnersController < ApplicationController
 
     require 'open-uri'
 
-    #begin
-      xml = open(@partner.url).read
+    xml = open(@partner.url).read
+    feed = Feed.from_xml(xml)
 
-      @feed = Feed.from_xml(xml)
-    #rescue
-      
-    #end
+    # filter and sort
+    @items = feed.items.select {|item| ['pressrelease', 'news'].member? item.type_of_media }
   end
 
   ### RESTful actions
